@@ -1,7 +1,8 @@
-package com.easycarrental.config;
+package com.easycar.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+
 
 @Configuration
 @Import({JPAConfig.class})

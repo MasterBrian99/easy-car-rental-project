@@ -1,0 +1,27 @@
+.main {
+  width: 20rem;
+  height: 100%;
+  min-height: 20rem;
+  background-color: rgb(18, 34, 44);
+  background-image: linear-gradient(160deg, #12222c 0%, #4126a0 100%);
+  margin: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  padding: 0.9rem;
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 2rem 1rem 0;
+  }
+}
+.cardIcon {
+  background-color: #17c2ed;
+  padding: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #17c2ed;
+  svg {
+    font-size: 2.5rem;
+  }
+}
