@@ -1,18 +1,24 @@
-package com.easycar.entity;
+package lk.easycar.entity;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
+@Entity
+
 public class Vehicle {
-    String vehicle_id;
+    @Id
+    String vehicle_Registration_number;
     String vehicle_brand;
     String vehicle_type;
-    String vehicle_Registration_number;
+    String vehicle_image;
     String vehicle_color;
     int vehicle_No_Of_Passengers;
     String vehicle_transmission_type;

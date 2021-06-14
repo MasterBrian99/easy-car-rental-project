@@ -1,12 +1,15 @@
-package com.easycar.service;
+package lk.easycar.service;
 
-import com.easycar.dto.VehicleDTO;
+import lk.easycar.dto.VehicleDTO;
 
 import java.util.ArrayList;
 
 public interface VehicleService {
 
-    ArrayList<VehicleDTO> getAllCustomers();
-
+    void addVehicle(VehicleDTO vehicleDTO);
+    ArrayList<VehicleDTO> getAllVehicles();
+    void deleteVehicle(String id);
+    VehicleDTO searchVehicle(String id);
+    void updateVehicle(VehicleDTO dto);
 
 }

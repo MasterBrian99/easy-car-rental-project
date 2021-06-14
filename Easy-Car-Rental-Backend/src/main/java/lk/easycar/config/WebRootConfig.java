@@ -1,4 +1,4 @@
-package com.easycar.config;
+package lk.easycar.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

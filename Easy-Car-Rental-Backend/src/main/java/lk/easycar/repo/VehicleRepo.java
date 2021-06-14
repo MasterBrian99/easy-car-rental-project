@@ -1,6 +1,6 @@
-package com.easycar.repo;
+package lk.easycar.repo;
 
-import com.easycar.entity.Vehicle;
+import lk.easycar.entity.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

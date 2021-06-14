@@ -1,4 +1,4 @@
-package com.easycar.config;
+package lk.easycar.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.easycar")
+@ComponentScan(basePackages = "lk.easycar")
 public class WebAppConfig {
     @Bean
     public ModelMapper modelMapper() {

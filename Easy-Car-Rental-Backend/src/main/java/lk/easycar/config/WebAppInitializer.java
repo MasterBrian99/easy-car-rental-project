@@ -1,4 +1,4 @@
-package com.easycar.config;
+package lk.easycar.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

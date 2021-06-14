@@ -1,4 +1,4 @@
-package com.easycar.config;
+package lk.easycar.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.easycar.repo")
+@EnableJpaRepositories(basePackages = "lk.easycar.repo")
 @PropertySource("classpath:application.properties")
 public class JPAConfig {
 

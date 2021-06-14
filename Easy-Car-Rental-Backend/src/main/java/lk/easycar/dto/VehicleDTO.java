@@ -1,18 +1,18 @@
-package com.easycar.dto;
+package lk.easycar.dto;
 
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Data
-@NoArgsConstructor
 public class VehicleDTO {
-    String vehicle_id;
+    String vehicle_Registration_number;
     String vehicle_brand;
     String vehicle_type;
-    String vehicle_Registration_number;
+    String vehicle_image;
     String vehicle_color;
     int vehicle_No_Of_Passengers;
     String vehicle_transmission_type;

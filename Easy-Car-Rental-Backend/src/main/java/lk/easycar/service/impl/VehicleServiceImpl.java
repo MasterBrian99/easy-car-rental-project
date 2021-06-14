@@ -1,9 +1,9 @@
-package com.easycar.service.impl;
+package lk.easycar.service.impl;
 
-import com.easycar.dto.VehicleDTO;
-import com.easycar.entity.Vehicle;
-import com.easycar.repo.VehicleRepo;
-import com.easycar.service.VehicleService;
+import lk.easycar.dto.VehicleDTO;
+import lk.easycar.entity.Vehicle;
+import lk.easycar.repo.VehicleRepo;
+import lk.easycar.service.VehicleService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,6 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author : Sanu Vithanage
- * @since : 0.1.0
- **/
 @Service
 @Transactional
 public class VehicleServiceImpl implements VehicleService {
@@ -28,14 +24,32 @@ public class VehicleServiceImpl implements VehicleService {
     private ModelMapper mapper;
 
 
+    @Override
+    public void addVehicle(VehicleDTO vehicleDTO) {
+       vehicleRepo.save(mapper.map(vehicleDTO,Vehicle.class));
+    }
 
     @Override
-    public ArrayList<VehicleDTO> getAllCustomers() {
+    public ArrayList<VehicleDTO> getAllVehicles() {
         List<Vehicle> all = vehicleRepo.findAll();
         return mapper.map(all, new TypeToken<ArrayList<VehicleDTO>>() {
         }.getType());
     }
 
+    @Override
+    public void deleteVehicle(String id) {
+
+    }
+
+    @Override
+    public VehicleDTO searchVehicle(String id) {
+        return null;
+    }
+
+    @Override
+    public void updateVehicle(VehicleDTO dto) {
+
+    }
 
 
 }

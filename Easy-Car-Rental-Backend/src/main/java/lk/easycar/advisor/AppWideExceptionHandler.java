@@ -1,8 +1,8 @@
-package com.easycar.advisor;
+package lk.easycar.advisor;
 
-import com.easycar.exception.NotFoundException;
-import com.easycar.exception.ValidateException;
-import com.easycar.util.StandradResponse;
+import lk.easycar.exception.NotFoundException;
+import lk.easycar.exception.ValidateException;
+import lk.easycar.util.StandradResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
