@@ -1,12 +1,10 @@
 import React from "react";
-import NavbarLg from "../../components/Navbar/NavbarLg";
 import styles from "./styles.module.scss";
 import Tilt from "react-tilt";
 import Img from "../../assets/images/one.jpg";
 const Hero = () => {
   return (
     <>
-      <NavbarLg />
       <div className={`${styles.main} `}>
         <div className="container">
           <div className={`${styles.content} columns is-desktop  `}>

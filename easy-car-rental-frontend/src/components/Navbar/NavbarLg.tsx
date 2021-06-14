@@ -31,7 +31,7 @@ const NavbarLg = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/">Browse</Link>
+              <Link to="/browse">Browse</Link>
             </li>
             <li>
               <Link to="/home">Features</Link>

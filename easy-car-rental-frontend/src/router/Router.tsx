@@ -1,14 +1,20 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Home from "../screens/Home/Home";
+import NavbarLg from "../components/Navbar/NavbarLg";
+import Browse from "../screens/Browse";
 
+import Home from "../screens/Home";
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Home} />
-      </Switch>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <NavbarLg />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/browse" exact component={Browse} />
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 };
 

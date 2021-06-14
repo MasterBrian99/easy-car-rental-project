@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import HeaderText from "../../components/HeaderText/HeaderText";
 import VehicleCard from "../../components/VehicleCard/VehicleCard";
 import styles from "./style.module.scss";
 import { VehicleProp } from "../../interface/interface";
-import { Link } from "react-router-dom";
-
-const BrowseHome = () => {
+const BrowseContainer = () => {
   const [vehicleData, setVehicleData] = useState<VehicleProp[]>([]!);
 
   useEffect(() => {
@@ -20,12 +17,10 @@ const BrowseHome = () => {
       });
     return () => {};
   }, []);
-
   return (
-    <div className={styles.main}>
-      <HeaderText header="What we Have" info="Rent A Car Of Any Brand" />
+    <div className={`${styles.main}`}>
       <div
-        className={` ${styles.cardSet} container is-flex is-justify-content-center is-flex-wrap-wrap`}
+        className={` container is-flex  is-justify-content-center is-flex-wrap-wrap is-align-items-center ${styles.cardSection}`}
       >
         {vehicleData.map((el, i: number) => (
           <VehicleCard
@@ -47,14 +42,8 @@ const BrowseHome = () => {
           />
         ))}
       </div>
-
-      <div className="container is-flex is-justify-content-center is-align-items-center">
-        <Link to="/browse" className={styles.moreButton}>
-          See More
-        </Link>
-      </div>
     </div>
   );
 };
 
-export default BrowseHome;
+export default BrowseContainer;
