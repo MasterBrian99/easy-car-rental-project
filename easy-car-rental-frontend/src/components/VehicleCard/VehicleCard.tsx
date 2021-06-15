@@ -1,11 +1,17 @@
 import React from "react";
 import styles from "./style.module.scss";
 import { VehicleProp } from "../../interface/interface";
-
+import { useHistory } from "react-router-dom";
 const VehicleCard = (prop: VehicleProp) => {
+  let history = useHistory();
+
+  function visitVehicleInfo(info: VehicleProp) {
+    history.push(`/vehicle/${info.vehicle_Registration_number}`);
+  }
+
   return (
     <>
-      <article className={styles.card}>
+      <article className={styles.card} onClick={() => visitVehicleInfo(prop)}>
         <div
           style={{ backgroundImage: `url("${prop.vehicle_image}")` }}
           className={styles.cardHeader}
