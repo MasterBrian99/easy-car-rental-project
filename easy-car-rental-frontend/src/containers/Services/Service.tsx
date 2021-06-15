@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderText from "../../components/HeaderText/HeaderText";
-import ServiceItem from "../../components/ServiceItem/ServiceItem";
+import HeaderText from "../../components/common/HeaderText/HeaderText";
+import ServiceItem from "../../components/common/ServiceItem/ServiceItem";
 import styles from "./style.module.scss";
 
 const Service = () => {

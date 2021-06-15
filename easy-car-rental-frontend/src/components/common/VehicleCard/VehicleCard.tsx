@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./style.module.scss";
-import { VehicleProp } from "../../interface/interface";
+import { VehicleProp } from "../../../interface/interface";
 import { useHistory } from "react-router-dom";
 const VehicleCard = (prop: VehicleProp) => {
   let history = useHistory();

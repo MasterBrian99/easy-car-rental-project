@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import VehicleCard from "../../components/VehicleCard/VehicleCard";
+import VehicleCard from "../../components/common/VehicleCard/VehicleCard";
 import styles from "./style.module.scss";
 import { VehicleProp } from "../../interface/interface";
 const BrowseContainer = () => {

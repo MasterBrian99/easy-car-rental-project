@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import HeaderText from "../../components/HeaderText/HeaderText";
-import VehicleCard from "../../components/VehicleCard/VehicleCard";
+import HeaderText from "../../components/common/HeaderText/HeaderText";
+import VehicleCard from "../../components/common/VehicleCard/VehicleCard";
 import styles from "./style.module.scss";
 import { VehicleProp } from "../../interface/interface";
 import { Link } from "react-router-dom";
