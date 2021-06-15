@@ -1,18 +1,25 @@
 package lk.easycar.entity;
 
 
+import com.sun.istack.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static javax.persistence.CascadeType.REMOVE;
 
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @Entity
 
+
+@Table(name = "vehicle")
 public class Vehicle {
     @Id
     String vehicle_Registration_number;
@@ -29,4 +36,8 @@ public class Vehicle {
     int vehicle_Free_Km_for_a_month;
     double vehicle_Price_per_Extra_KM;
     int vehicle_Current_KM;
+
+    @OneToMany(mappedBy = "id", cascade=REMOVE,orphanRemoval =true )
+    List<VehicleImage> vehicleImageList=new ArrayList<>();
+
 }

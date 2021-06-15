@@ -1,6 +1,7 @@
 package lk.easycar.dto;
 
 
+import lk.easycar.entity.VehicleImage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,4 +24,6 @@ public class VehicleDTO {
     int vehicle_Free_Km_for_a_month;
     double vehicle_Price_per_Extra_KM;
     int vehicle_Current_KM;
+    VehicleImage vehicleImage;
+
 }
