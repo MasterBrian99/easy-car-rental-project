@@ -1,7 +1,5 @@
 package lk.easycar.entity;
 
-
-import com.sun.istack.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +15,8 @@ import static javax.persistence.CascadeType.REMOVE;
 @Data
 @NoArgsConstructor
 @Entity
+@Table(name = "vehicle_list")
 
-
-@Table(name = "vehicle")
 public class Vehicle {
     @Id
     String vehicle_Registration_number;
