@@ -1,0 +1,33 @@
+.main {
+  margin: 2rem 2rem 2rem 20rem;
+  min-height: 93vh;
+  height: 100%;
+  background-color: aqua;
+  border-radius: 20px;
+  background-color: #1b1b1b;
+  box-shadow: 3px 5px 22px -4px #000000;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.items {
+  width: 100%;
+  text-align: center;
+  & li {
+    color: #909fb7;
+    font-size: 1.3rem;
+    padding: 0.7rem;
+    font-weight: 800;
+    margin-top: 0.4rem;
+    transition: all 400ms;
+    &:hover {
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+  & svg {
+    margin: 0 0.5rem;
+    font-size: 1.9rem;
+    margin-bottom: 0.2rem;
+  }
+}

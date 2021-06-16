@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./style.module.scss";
 import { RiDashboardLine } from "react-icons/ri";
-import { AdminDashSideRoute } from "../../../data/mainData";
+
 import { useHistory } from "react-router-dom";
+import { AdminDashSideRoute } from "../../../data/mainData";
 
 const SideBar = () => {
   let history = useHistory();
