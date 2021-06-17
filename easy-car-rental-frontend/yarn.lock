@@ -9391,6 +9391,11 @@ react-fast-compare@^2.0.1:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+react-headless-tabs@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-headless-tabs/-/react-headless-tabs-3.0.1.tgz#8813756f2168c4a42694c6823888db7f02e2f249"
+  integrity sha512-+AYAbpkI3S7++qS7dx3JZ2yJzgP5M6iYiFPWy4yVx3Qq16bQnZrEbI/XIpGGSkj0G4j11VhtEjd/MOAiIq2sLQ==
+
 react-icons@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
