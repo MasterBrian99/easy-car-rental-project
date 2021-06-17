@@ -13,7 +13,7 @@ const VehicleCard = (prop: VehicleProp) => {
     <>
       <article className={styles.card} onClick={() => visitVehicleInfo(prop)}>
         <div
-          style={{ backgroundImage: `url("${prop.vehicle_image}")` }}
+          style={{ backgroundImage: `url("${prop.vehicle_image_front_view}")` }}
           className={styles.cardHeader}
         ></div>
         <div className={styles.cardBody}>
