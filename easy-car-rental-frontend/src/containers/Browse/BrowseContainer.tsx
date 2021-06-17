@@ -36,9 +36,13 @@ const BrowseContainer = () => {
             vehicle_Registration_number={el.vehicle_Registration_number}
             vehicle_brand={el.vehicle_brand}
             vehicle_color={el.vehicle_color}
-            vehicle_image={el.vehicle_image}
+            vehicle_image_back_view={el.vehicle_image_back_view}
+            vehicle_image_front_view={el.vehicle_image_front_view}
+            vehicle_image_interior_view={el.vehicle_image_interior_view}
+            vehicle_image_side_view={el.vehicle_image_side_view}
             vehicle_transmission_type={el.vehicle_transmission_type}
             vehicle_type={el.vehicle_type}
+            available={el.available}
           />
         ))}
       </div>
