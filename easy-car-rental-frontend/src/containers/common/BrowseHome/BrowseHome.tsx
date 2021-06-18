@@ -2,7 +2,6 @@ import { Container, Button, Flex } from "@chakra-ui/react";
 import React from "react";
 import ContainerHeader from "../../../components/common/ContainerHeader/ContainerHeader";
 import VehicleCard from "../../../components/VehicleCard/VehicleCard";
-import styles from "./style.module.scss";
 import { HiCursorClick } from "react-icons/hi";
 const BrowseHome = () => {
   return (

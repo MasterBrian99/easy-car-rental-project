@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./style.module.scss";
 import { Flex, Container, Heading, Box, Image, Button } from "@chakra-ui/react";
 import Img from "../../../assets/images/Road trip_Monochromatic.png";
 import { AiFillCar } from "react-icons/ai";
