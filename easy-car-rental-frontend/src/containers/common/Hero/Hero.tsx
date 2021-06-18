@@ -7,7 +7,7 @@ import { ImUserPlus } from "react-icons/im";
 
 const Hero = () => {
   return (
-    <div className={styles.main}>
+    <Box className={`mainBackgrounds`} pt={"40"}>
       <Container maxW="container.xl" height="100%">
         <Flex justifyContent="space-between" alignItems="center" height="100%">
           <Box display="flex" flexDirection="column">
@@ -33,7 +33,7 @@ const Hero = () => {
           </Box>
         </Flex>
       </Container>
-    </div>
+    </Box>
   );
 };
 

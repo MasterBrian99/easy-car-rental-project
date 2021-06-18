@@ -32,3 +32,13 @@ body {
   clip-path: circle(22% at 10% 10%);
   z-index: -20;
 }
+
+.mainBackgrounds {
+  color: #fff;
+  background-color: #182245;
+  background: rgba(24, 34, 69, 0.7);
+  backdrop-filter: blur(80px);
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
