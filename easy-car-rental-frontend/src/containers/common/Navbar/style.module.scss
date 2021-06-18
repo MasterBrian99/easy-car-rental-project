@@ -1,11 +1,14 @@
 .main {
   padding: 0.4rem 0;
-  // border-bottom: 1px solid #4e4e50;
+  border-bottom: 1px solid #4e4e50;
   position: fixed;
   width: 100%;
   background-color: transparent;
   color: #fff;
   z-index: 20;
+  background-color: #182245;
+  background: rgba(24, 34, 69, 0.7);
+  backdrop-filter: blur(80px);
 }
 
 .listItem {
