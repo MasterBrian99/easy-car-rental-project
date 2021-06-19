@@ -41,11 +41,18 @@ body {
   width: 100%;
 }
 
-
-.componentBlurBackground{
+.componentBlurBackground {
   background: rgba(24, 34, 69, 0.2);
   backdrop-filter: blur(80px);
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border-radius: 20px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.adminVehicleTabButtons {
+  margin: 1rem;
+  // color: #929292 !important;
+  &:focus {
+    box-shadow: none !important;
+  }
 }

@@ -1,14 +1,14 @@
 import React from "react";
 import { Box } from "@chakra-ui/layout";
 import Sidebar from "../../components/admin/Sidebar/Sidebar";
-import AdminMainBar from "../../containers/admin/AdminMainBar/AdminMainBar";
+import AdminVehicleTab from "../../containers/admin/AdminVehicleTab/AdminVehicleTab";
 
-const AdminDashboardPage = () => {
+const AdminDashboardVehiclePage = () => {
   return (
     <>
       <Box className={"mainBackgrounds"} display={"flex"}>
         <Sidebar />
-        <AdminMainBar />
+        <AdminVehicleTab />
       </Box>
       <div className="CircleContainerOne" />
       <div className="CircleContainerTwo" />
@@ -16,4 +16,4 @@ const AdminDashboardPage = () => {
   );
 };
 
-export default AdminDashboardPage;
+export default AdminDashboardVehiclePage;
