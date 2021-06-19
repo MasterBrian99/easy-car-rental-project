@@ -1,6 +1,10 @@
 import React from "react";
 import { LinkBox, Box, Heading, Text, Image } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
+
 const VehicleCard = () => {
+  const history = useHistory();
+
   return (
     <LinkBox
       backgroundColor="blue.900"
@@ -9,7 +13,7 @@ const VehicleCard = () => {
       rounded="md"
       m={2}
       onClick={() => {
-        console.log("hello");
+        history.push("/vehicle/c001");
       }}
       cursor="pointer"
     >
