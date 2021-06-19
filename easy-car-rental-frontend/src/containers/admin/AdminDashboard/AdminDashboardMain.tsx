@@ -1,17 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Sidebar from "../../../components/admin/Sidebar/Sidebar";
 import {Box} from "@chakra-ui/layout";
 import AdminMainBar from "./AdminMainBar/AdminMainBar";
 
-class AdminDashboardMain extends Component {
-    render() {
-        return (
+
+const MyComponent = () => {
+    return (
             <Box className={'mainBackgrounds'} display={'flex'} >
                 <Sidebar/>
                 <AdminMainBar/>
             </Box>
-        );
-    }
-}
+    );
+};
 
-export default AdminDashboardMain;
+export default MyComponent;
+
+
+// AdminDashboardMain

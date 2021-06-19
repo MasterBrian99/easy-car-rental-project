@@ -1,13 +1,14 @@
 import React from 'react';
+import AdminDashboardMain from "../../containers/admin/AdminDashboard/AdminDashboardMain";
 
-const AdminDashboard = () => {
+const AdminDashboardPage = () => {
     return (
         <div>
-            <div className="CircleContainerOne"></div>
-            <div className="CircleContainerTwo"></div>
-            <h1>Hello</h1>
+            <AdminDashboardMain/>
+            <div className="CircleContainerOne"/>
+            <div className="CircleContainerTwo"/>
         </div>
     );
 };
 
-export default AdminDashboard;
+export default AdminDashboardPage;
