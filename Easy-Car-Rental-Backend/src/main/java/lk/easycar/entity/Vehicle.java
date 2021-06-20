@@ -19,22 +19,42 @@ import static javax.persistence.CascadeType.REMOVE;
 
 public class Vehicle {
     @Id
-    String vehicle_Registration_number;
-    String vehicle_brand;
-    String vehicle_type;
-    String vehicle_image;
-    String vehicle_color;
-    int vehicle_No_Of_Passengers;
-    String vehicle_transmission_type;
-    String vehicle_Fuel_Type;
-    double vehicle_Daily_Rate;
-    double vehicle_Monthly_Rate;
-    int vehicle_Free_Km_for_a_Day;
-    int vehicle_Free_Km_for_a_month;
-    double vehicle_Price_per_Extra_KM;
-    int vehicle_Current_KM;
-
-    @OneToMany(mappedBy = "id", cascade=REMOVE,orphanRemoval =true )
-    List<VehicleImage> vehicleImageList=new ArrayList<>();
+    String registration_number;
+    String brand;
+    String type;
+    String image_front_view;
+    String image_back_view;
+    String image_side_view;
+    String image_interior_view;
+    String color;
+    int no_Of_Passengers;
+    String transmission_type;
+    String fuel_Type;
+    double daily_Rate;
+    double monthly_Rate;
+    int free_Km_for_a_Day;
+    int free_Km_for_a_month;
+    double price_per_Extra_KM;
+    int current_KM;
+    String available;
 
 }
+
+//  Registration_number: string;
+//          Brand: string;
+//          Type: string;
+//          image_front_view: any;
+//          image_back_view: any;
+//          image_side_view: any;
+//          image_interior_view: any;
+//          Color: string;
+//          No_Of_Passengers: number;
+//          Transmission_type: string;
+//          Fuel_Type: string;
+//          Daily_Rate: number;
+//          Monthly_Rate: number;
+//          Free_Km_for_a_Day: number;
+//          Free_Km_for_a_month: number;
+//          Price_per_Extra_KM: number;
+//          Current_KM: number;
+//          available: string;

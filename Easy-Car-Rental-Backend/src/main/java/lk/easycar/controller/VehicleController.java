@@ -45,7 +45,7 @@ public class VehicleController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateCustomer(@RequestBody VehicleDTO dto) {
-        if (dto.getVehicle_Registration_number().trim().length() <= 0) {
+        if (dto.getRegistration_number().trim().length() <= 0) {
             throw new NotFoundException("No id provided to update");
         }
         service.updateVehicle(dto);
