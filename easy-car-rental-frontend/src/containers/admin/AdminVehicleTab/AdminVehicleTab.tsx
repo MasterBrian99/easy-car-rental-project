@@ -2,6 +2,8 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import AddVehicles from "./components/AddVehicles";
+import ViewVehicle from "./components/ViewVehicle";
+import SearchVehicle from "./components/SearchVehicle";
 
 const AdminVehicleTab = () => {
   return (
@@ -23,6 +25,7 @@ const AdminVehicleTab = () => {
         width="100%"
         border="none"
         isLazy
+        lazyBehavior={"unmount"}
       >
         <TabList>
           <Tab className="adminVehicleTabButtons">Add Vehicles</Tab>
@@ -36,10 +39,10 @@ const AdminVehicleTab = () => {
             <AddVehicles />
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <ViewVehicle />
           </TabPanel>
           <TabPanel>
-            <p>three!</p>
+            <SearchVehicle />
           </TabPanel>
           <TabPanel>
             <p>Four!</p>

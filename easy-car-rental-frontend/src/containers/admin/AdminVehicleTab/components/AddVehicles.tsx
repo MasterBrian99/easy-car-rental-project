@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { Box, ButtonGroup, Grid, Input } from "@chakra-ui/react";
+import { Box, ButtonGroup, Grid, Button } from "@chakra-ui/react";
 import { Formik } from "formik";
-import {
-  InputControl,
-  PercentComplete,
-  SubmitButton,
-  ResetButton,
-} from "formik-chakra-ui";
+import { InputControl, PercentComplete, ResetButton } from "formik-chakra-ui";
 import * as Yup from "yup";
 import { VehicleProp } from "../../../../interface/interface";
 import axios from "axios";
@@ -18,7 +13,9 @@ const onSubmit = (values: any, actions: any) => {
     url: "http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/vehicle",
     data: values,
   }).then(function (response) {
-    console.log(response);
+    if (response.status === 201) {
+    }
+    console.log(response.status);
   });
   // console.lo g(values);
 };
@@ -37,24 +34,24 @@ const onSubmit = (values: any, actions: any) => {
 // }
 
 const initialValues: VehicleProp = {
-  registration_number: "23",
-  brand: "34",
-  type: "234",
-  image_front_view: "234",
-  image_back_view: "234",
-  image_side_view: "234",
-  image_interior_view: "fd",
-  color: "234",
+  registration_number: "",
+  brand: "",
+  type: "",
+  image_front_view: "",
+  image_back_view: "",
+  image_side_view: "",
+  image_interior_view: "",
+  color: "",
   no_Of_Passengers: 0,
-  transmission_type: "fd",
-  fuel_Type: "fd",
+  transmission_type: "",
+  fuel_Type: "",
   daily_Rate: 0,
   monthly_Rate: 0,
   free_Km_for_a_Day: 0,
   free_Km_for_a_month: 0,
   price_per_Extra_KM: 0,
   current_KM: 0,
-  available: "sdsdfsdf",
+  available: "true",
 };
 const validationSchema = Yup.object({
   registration_number: Yup.string().required(),
@@ -66,7 +63,7 @@ const validationSchema = Yup.object({
   image_interior_view: Yup.mixed().nullable().notRequired(),
   color: Yup.string().required(),
   no_Of_Passengers: Yup.number().required(),
-  Transmission_type: Yup.string().required(),
+  transmission_type: Yup.string().required(),
   fuel_Type: Yup.string().required(),
   daily_Rate: Yup.string().required(),
   monthly_Rate: Yup.string().required(),
@@ -103,6 +100,7 @@ const Form = () => {
               <InputControl name="brand" label="Brand" />
 
               <InputControl name="type" label="Type" />
+
               <InputControl name="color" label="Color" />
               <InputControl name="no_Of_Passengers" label="No Of Passengers" />
               <InputControl
@@ -110,9 +108,10 @@ const Form = () => {
                 label="Transmission type"
               />
               <InputControl name="fuel_Type" label="Fuel Type" />
-
               <InputControl name="daily_Rate" label="Daily Rate" />
               <InputControl name="monthly_Rate" label="Monthly Rate" />
+            </Box>
+            <Box>
               <InputControl
                 name="free_Km_for_a_Day"
                 label="Free Km for a Day"
@@ -121,8 +120,6 @@ const Form = () => {
                 name="free_Km_for_a_month"
                 label="Free Km for a month"
               />
-            </Box>
-            <Box>
               <InputControl
                 name="price_per_Extra_KM"
                 label="Price per Extra KM"
@@ -135,9 +132,10 @@ const Form = () => {
                 name="image_interior_view"
                 label="Image Interior View"
               />
-              <InputControl name="available" label="Iasdadmage Interior View" />
-              <ButtonGroup>
-                <SubmitButton>Submit</SubmitButton>
+              <ButtonGroup mt={"2rem"}>
+                <Button type="submit" colorScheme="blue">
+                  Submit
+                </Button>
                 <ResetButton>Reset</ResetButton>
               </ButtonGroup>
             </Box>
