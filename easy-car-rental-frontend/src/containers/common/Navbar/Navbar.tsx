@@ -19,10 +19,10 @@ const Navbar = () => {
           <Box>
             <ul className={styles.listItem}>
               <Link to="/">
-                <li>Lamo</li>
+                <li>Home</li>
               </Link>
-              <Link to="/">
-                <li>Lamo</li>
+              <Link to="/browse">
+                <li>Browse</li>
               </Link>
               <Link to="/">
                 <li>Lamo</li>

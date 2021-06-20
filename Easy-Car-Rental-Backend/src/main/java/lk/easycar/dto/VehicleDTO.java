@@ -1,7 +1,6 @@
 package lk.easycar.dto;
 
 
-import lk.easycar.entity.VehicleImage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,20 +9,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class VehicleDTO {
-    String vehicle_Registration_number;
-    String vehicle_brand;
-    String vehicle_type;
-    String vehicle_image;
-    String vehicle_color;
-    int vehicle_No_Of_Passengers;
-    String vehicle_transmission_type;
-    String vehicle_Fuel_Type;
-    double vehicle_Daily_Rate;
-    double vehicle_Monthly_Rate;
-    int vehicle_Free_Km_for_a_Day;
-    int vehicle_Free_Km_for_a_month;
-    double vehicle_Price_per_Extra_KM;
-    int vehicle_Current_KM;
-    VehicleImage vehicleImage;
-
+    String registration_number;
+    String brand;
+    String type;
+    String image_front_view;
+    String image_back_view;
+    String image_side_view;
+    String image_interior_view;
+    String color;
+    int no_Of_Passengers;
+    String transmission_type;
+    String fuel_Type;
+    double daily_Rate;
+    double monthly_Rate;
+    int free_Km_for_a_Day;
+    int free_Km_for_a_month;
+    double price_per_Extra_KM;
+    int current_KM;
+    String available;
 }
