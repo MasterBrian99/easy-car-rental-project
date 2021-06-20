@@ -1,20 +1,20 @@
 export interface VehicleProp {
-  vehicle_Registration_number: string;
-  vehicle_brand: string;
-  vehicle_type: string;
-  vehicle_image_front_view: string;
-  vehicle_image_back_view: string;
-  vehicle_image_side_view: string;
-  vehicle_image_interior_view: string;
-  vehicle_color: string;
-  vehicle_No_Of_Passengers: number;
-  vehicle_transmission_type: string;
-  vehicle_Fuel_Type: string;
-  vehicle_Daily_Rate: number;
-  vehicle_Monthly_Rate: number;
-  vehicle_Free_Km_for_a_Day: number;
-  vehicle_Free_Km_for_a_month: number;
-  vehicle_Price_per_Extra_KM: number;
-  vehicle_Current_KM: number;
+  registration_number: string;
+  brand: string;
+  type: string;
+  image_front_view: any;
+  image_back_view: any;
+  image_side_view: any;
+  image_interior_view: any;
+  color: string;
+  no_Of_Passengers: number;
+  transmission_type: string;
+  fuel_Type: string;
+  daily_Rate: number;
+  monthly_Rate: number;
+  free_Km_for_a_Day: number;
+  free_Km_for_a_month: number;
+  price_per_Extra_KM: number;
+  current_KM: number;
   available: string;
 }

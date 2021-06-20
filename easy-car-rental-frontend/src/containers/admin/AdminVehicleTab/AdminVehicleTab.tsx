@@ -1,6 +1,8 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import AddVehicles from "./components/AddVehicles";
+
 const AdminVehicleTab = () => {
   return (
     <Box
@@ -31,7 +33,7 @@ const AdminVehicleTab = () => {
 
         <TabPanels>
           <TabPanel>
-            <p>one!</p>
+            <AddVehicles />
           </TabPanel>
           <TabPanel>
             <p>two!</p>
