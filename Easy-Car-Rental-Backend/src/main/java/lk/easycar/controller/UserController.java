@@ -24,4 +24,10 @@ public class CustomerController {
         return new ResponseEntity(new StandradResponse("201","done",customerDTO),HttpStatus.CREATED);
     }
 
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity searchCustomer(@PathVariable String id) {
+        CustomerDTO customerDTO = customerService.searchCustomer(id);
+        return new ResponseEntity(new StandradResponse("200", "Done", customerDTO), HttpStatus.OK);
+    }
+
 }

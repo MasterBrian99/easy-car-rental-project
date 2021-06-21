@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -40,7 +41,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO searchCustomer(String id) {
-        return null;
+        Optional<Customer> customer = customerRepo.findById(id);
+        return customer.map(value -> mapper.map(value, CustomerDTO.class)).orElse(null);
     }
 
     @Override
