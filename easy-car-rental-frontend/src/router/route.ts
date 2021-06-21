@@ -3,6 +3,8 @@ import MainPage from "../screens/common/MainPage";
 import VehiclePage from "../screens/common/VehiclePage";
 import AdminDashboardPage from "../screens/admin/AdminDashboardPage";
 import AdminDashboardVehiclePage from "../screens/admin/AdminDashboardVehiclePage";
+import LoginPage from "../screens/common/LoginPage";
+import RegisterPage from "../screens/common/RegisterPage";
 
 export const appRoutes = [
   {
@@ -33,6 +35,18 @@ export const appRoutes = [
     id: 5,
     component: AdminDashboardVehiclePage,
     path: "/admin/dashboard/vehicle",
+    exact: true,
+  },
+  {
+    id: 6,
+    component: LoginPage,
+    path: "/login",
+    exact: true,
+  },
+  {
+    id: 7,
+    component: RegisterPage,
+    path: "/register",
     exact: true,
   },
 ];
