@@ -13,15 +13,15 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "customer")
-public class Customer {
+@Table(name = "user")
+public class User {
     @Id
     private String username;
     private String fullName;
     private String role;
     private String image;
     private String address;
-    private String password;
+    private String pass;
 
 
 }

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+
 import {
   Box,
   Container,
@@ -8,12 +9,24 @@ import {
   FormLabel,
   FormErrorMessage,
   Button,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  CloseButton,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
+import axios from "axios";
+import { UserContext } from "../../../context/UserContext";
 
 const Login = () => {
-  //   const [username, setUsername] = useState("");
+  const [showUserNameAlert, setShowUserNameAlert] = useState(false);
+  const [showPasswordAlert, setShowPasswordAlert] = useState(false);
+  const history = useHistory();
+
+  // @ts-ignore
+  const [user, setUser] = useContext(UserContext);
+
   //   const [password, setPassword] = useState("");
   function validateName(value: string) {
     let error;
@@ -62,10 +75,29 @@ const Login = () => {
           {/*  */}
           <Box mt="3rem">
             <Formik
-              initialValues={{ name: "Sasuke", password: "" }}
+              initialValues={{ name: "", pass: "" }}
               onSubmit={(values, actions) => {
-                setTimeout(() => {
-                  alert(JSON.stringify(values, null, 2));
+                setTimeout(async () => {
+                  // alert(JSON.stringify(values, null, 2));
+                  const res = await axios.get(
+                    `http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/customer/${values.name}`
+                  );
+                  // console.log(res);
+                  if (res.data.data == null) {
+                    // console.log(user);
+
+                    setShowUserNameAlert(true);
+                  } else {
+                    if (res.data.data.pass === values.pass) {
+                      setUser(res.data.data);
+                      // console.log(user);
+
+                      history.push("/profile");
+                      // console.log("gg");
+                    } else {
+                      setShowPasswordAlert(true);
+                    }
+                  }
                   actions.setSubmitting(false);
                 }, 1000);
               }}
@@ -90,25 +122,21 @@ const Login = () => {
                     )}
                   </Field>
 
-                  <Field name="password" validate={validatePassword}>
+                  <Field name="pass" validate={validatePassword}>
                     {/* @ts-ignore */}
                     {({ field, form }) => (
                       <FormControl
-                        isInvalid={
-                          form.errors.password && form.touched.password
-                        }
+                        isInvalid={form.errors.pass && form.touched.pass}
                       >
                         <FormLabel htmlFor="password">Password</FormLabel>
                         <Input
                           type="password"
                           {...field}
-                          id="password"
+                          id="pass"
                           placeholder="password"
                           width="30rem"
                         />
-                        <FormErrorMessage>
-                          {form.errors.password}
-                        </FormErrorMessage>
+                        <FormErrorMessage>{form.errors.pass}</FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
@@ -124,6 +152,40 @@ const Login = () => {
                 </Form>
               )}
             </Formik>
+            {showUserNameAlert ? (
+              <Alert status="error" mt={2} backgroundColor="red">
+                <AlertIcon color="white" />
+                <AlertTitle>username incorrect. please try again</AlertTitle>
+
+                <CloseButton
+                  position="absolute"
+                  right="8px"
+                  top="8px"
+                  onClick={() => {
+                    setShowUserNameAlert(false);
+                  }}
+                />
+              </Alert>
+            ) : (
+              <></>
+            )}
+            {showPasswordAlert ? (
+              <Alert status="error" mt={2} backgroundColor="red">
+                <AlertIcon color="white" />
+                <AlertTitle>password incorrect. please try again</AlertTitle>
+
+                <CloseButton
+                  position="absolute"
+                  right="8px"
+                  top="8px"
+                  onClick={() => {
+                    setShowPasswordAlert(false);
+                  }}
+                />
+              </Alert>
+            ) : (
+              <></>
+            )}
           </Box>
         </Box>
       </Container>

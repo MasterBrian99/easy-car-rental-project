@@ -1,10 +1,2 @@
-import { createContext } from "react";
-
-interface Prop {
-  user: "";
-  setUser: "";
-}
-export const UserContext = createContext<Prop | null>({
-  user: "",
-  setUser: "",
-});
+import React from "react";
+export const UserContext = React.createContext(null);

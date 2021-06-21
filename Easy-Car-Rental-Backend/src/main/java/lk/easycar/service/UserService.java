@@ -1,17 +1,16 @@
 package lk.easycar.service;
 
-import lk.easycar.dto.CustomerDTO;
-import lk.easycar.dto.VehicleDTO;
+import lk.easycar.dto.UserDTO;
 
 import java.util.ArrayList;
 
-public interface CustomerService {
+public interface UserService {
 
 
-    void addCustomer(CustomerDTO customerDTO);
-    ArrayList<CustomerDTO> getAllCustomers();
-    void deleteCustomer(String id);
-    CustomerDTO  searchCustomer(String id);
-    void updateCustomer(CustomerDTO dto);
+    void addUser(UserDTO userDTO);
+    ArrayList<UserDTO> getAllUser();
+    void deleteUser(String id);
+    UserDTO searchUser(String id);
+    void updateUser(UserDTO dto);
 
 }

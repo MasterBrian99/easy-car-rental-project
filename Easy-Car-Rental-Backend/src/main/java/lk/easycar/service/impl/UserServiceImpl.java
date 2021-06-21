@@ -1,10 +1,10 @@
 package lk.easycar.service.impl;
 
 
-import lk.easycar.dto.CustomerDTO;
-import lk.easycar.entity.Customer;
-import lk.easycar.repo.CustomerRepo;
-import lk.easycar.service.CustomerService;
+import lk.easycar.dto.UserDTO;
+import lk.easycar.entity.User;
+import lk.easycar.repo.UserRepo;
+import lk.easycar.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,38 +15,38 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class CustomerServiceImpl implements CustomerService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    private CustomerRepo customerRepo;
+    private UserRepo userRepo;
 
 
     @Autowired
     private ModelMapper mapper;
 
     @Override
-    public void addCustomer(CustomerDTO customerDTO) {
-        customerRepo.save(mapper.map(customerDTO, Customer.class));
+    public void addUser(UserDTO userDTO) {
+        userRepo.save(mapper.map(userDTO, User.class));
     }
 
     @Override
-    public ArrayList<CustomerDTO> getAllCustomers() {
+    public ArrayList<UserDTO> getAllUser() {
         return null;
     }
 
     @Override
-    public void deleteCustomer(String id) {
+    public void deleteUser(String id) {
 
     }
 
     @Override
-    public CustomerDTO searchCustomer(String id) {
-        Optional<Customer> customer = customerRepo.findById(id);
-        return customer.map(value -> mapper.map(value, CustomerDTO.class)).orElse(null);
+    public UserDTO searchUser(String id) {
+        Optional<User> user = userRepo.findById(id);
+        return user.map(value -> mapper.map(value, UserDTO.class)).orElse(null);
     }
 
     @Override
-    public void updateCustomer(CustomerDTO dto) {
+    public void updateUser(UserDTO dto) {
 
     }
 }

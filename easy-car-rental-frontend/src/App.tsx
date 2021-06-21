@@ -4,12 +4,18 @@ import { UserContext } from "./context/UserContext";
 import { appRoutes } from "./router/route";
 
 function App() {
-  const [user, setUser] = useState();
-
+  const [user, setUser] = useState({
+    username: "",
+    fullName: "",
+    role: "",
+    image: "",
+    address: "",
+    pass: "",
+  });
   return (
     <>
       {/* @ts-ignore */}
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={[user, setUser]}>
         <Router>
           <Switch>
             {appRoutes.map((el, i) => (

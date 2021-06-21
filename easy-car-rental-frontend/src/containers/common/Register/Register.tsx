@@ -93,7 +93,7 @@ const Register = () => {
               role: "",
               image: "",
               address: "",
-              password: "",
+              pass: "",
             }}
             onSubmit={(values, actions) => {
               setTimeout(() => {
@@ -107,7 +107,7 @@ const Register = () => {
                     role: values.role,
                     image: values.image,
                     address: values.address,
-                    password: values.password,
+                    pass: values.pass,
                   },
 
                   headers: {
@@ -201,23 +201,21 @@ const Register = () => {
                     </FormControl>
                   )}
                 </Field>
-                <Field name="password" validate={validatePassword}>
+                <Field name="pass" validate={validatePassword}>
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
-                      isInvalid={form.errors.password && form.touched.password}
+                      isInvalid={form.errors.pass && form.touched.pass}
                     >
-                      <FormLabel htmlFor="password">Password</FormLabel>
+                      <FormLabel htmlFor="pass">Password</FormLabel>
                       <Input
                         {...field}
-                        id="password"
-                        placeholder="Password"
+                        id="pass"
+                        placeholder="pass"
                         width="30rem"
-                        type="password"
+                        type="pass"
                       />
-                      <FormErrorMessage>
-                        {form.errors.password}
-                      </FormErrorMessage>
+                      <FormErrorMessage>{form.errors.pass}</FormErrorMessage>
                     </FormControl>
                   )}
                 </Field>

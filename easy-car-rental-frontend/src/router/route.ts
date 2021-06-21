@@ -5,6 +5,7 @@ import AdminDashboardPage from "../screens/admin/AdminDashboardPage";
 import AdminDashboardVehiclePage from "../screens/admin/AdminDashboardVehiclePage";
 import LoginPage from "../screens/common/LoginPage";
 import RegisterPage from "../screens/common/RegisterPage";
+import ProfilePage from "../screens/common/ProfilePage";
 
 export const appRoutes = [
   {
@@ -47,6 +48,12 @@ export const appRoutes = [
     id: 7,
     component: RegisterPage,
     path: "/register",
+    exact: true,
+  },
+  {
+    id: 8,
+    component: ProfilePage,
+    path: "/profile",
     exact: true,
   },
 ];
