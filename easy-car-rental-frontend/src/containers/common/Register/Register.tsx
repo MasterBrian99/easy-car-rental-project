@@ -94,6 +94,7 @@ const Register = () => {
               image: "",
               address: "",
               pass: "",
+              approved:"pending" 
             }}
             onSubmit={(values, actions) => {
               setTimeout(() => {
@@ -108,6 +109,7 @@ const Register = () => {
                     image: values.image,
                     address: values.address,
                     pass: values.pass,
+                    approved:values.approved
                   },
 
                   headers: {

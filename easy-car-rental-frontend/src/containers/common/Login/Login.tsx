@@ -14,7 +14,7 @@ import {
   AlertTitle,
   CloseButton,
 } from "@chakra-ui/react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { UserContext } from "../../../context/UserContext";
@@ -22,9 +22,9 @@ import { UserContext } from "../../../context/UserContext";
 const Login = () => {
   const [showUserNameAlert, setShowUserNameAlert] = useState(false);
   const [showPasswordAlert, setShowPasswordAlert] = useState(false);
-  const history = useHistory();
+  const [showProfileAlert, setShowProfileAlert] = useState(false);
 
-  // @ts-ignore
+  // @ts-ignore 
   const [user, setUser] = useContext(UserContext);
 
   //   const [password, setPassword] = useState("");
@@ -89,11 +89,10 @@ const Login = () => {
                     setShowUserNameAlert(true);
                   } else {
                     if (res.data.data.pass === values.pass) {
-                      setUser(res.data.data);
                       // console.log(user);
-
-                      history.push("/profile");
+                      setUser(res.data.data);
                       // console.log("gg");
+                      setShowProfileAlert(true);
                     } else {
                       setShowPasswordAlert(true);
                     }
@@ -183,6 +182,26 @@ const Login = () => {
                   }}
                 />
               </Alert>
+            ) : (
+              <></>
+            )}
+            {showProfileAlert ? (
+              <Link to="/profile">
+                <Alert status="success" mt={2} backgroundColor="green">
+                  <AlertIcon color="white" />
+                  <AlertTitle>login successful</AlertTitle>
+                  <AlertTitle>Click Here to visit your profile</AlertTitle>
+
+                  <CloseButton
+                    position="absolute"
+                    right="8px"
+                    top="8px"
+                    onClick={() => {
+                      setShowPasswordAlert(false);
+                    }}
+                  />
+                </Alert>
+              </Link>
             ) : (
               <></>
             )}

@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Flex, Heading, Spacer, Box, Container } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/react";
 import { Link, useHistory } from "react-router-dom";
 import { ImUserPlus } from "react-icons/im";
 import styles from "./style.module.scss";
 import { BiLogIn } from "react-icons/bi";
+import { UserContext } from "../../../context/UserContext";
 
 const Navbar = () => {
+  // @ts-ignore
+
+  const [user, setUser] = useContext(UserContext);
   const history = useHistory();
   return (
     <div className={styles.main}>
@@ -38,25 +42,39 @@ const Navbar = () => {
           </Box>
           <Spacer />
           <Box>
-            <Button
-              colorScheme="blue"
-              leftIcon={<BiLogIn />}
-              mr={"1rem"}
-              onClick={() => {
-                history.push("/login");
-              }}
-            >
-              Login
-            </Button>
-            <Button
-              colorScheme="blue"
-              leftIcon={<ImUserPlus />}
-              onClick={() => {
-                history.push("/register");
-              }}
-            >
-              Register
-            </Button>
+            {user.role !== "user" ? (
+              <>
+                <Button
+                  colorScheme="blue"
+                  leftIcon={<BiLogIn />}
+                  mr={"1rem"}
+                  onClick={() => {
+                    history.push("/login");
+                  }}
+                >
+                  Login
+                </Button>
+                <Button
+                  colorScheme="blue"
+                  leftIcon={<ImUserPlus />}
+                  onClick={() => {
+                    history.push("/register");
+                  }}
+                >
+                  Register
+                </Button>
+              </>
+            ) : (
+              <Button
+                colorScheme="blue"
+                leftIcon={<ImUserPlus />}
+                onClick={() => {
+                  history.push("/profile");
+                }}
+              >
+                Profile
+              </Button>
+            )}
 
             {/* <SignInForm /> */}
           </Box>

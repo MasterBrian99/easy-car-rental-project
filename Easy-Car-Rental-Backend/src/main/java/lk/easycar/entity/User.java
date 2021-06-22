@@ -22,6 +22,6 @@ public class User {
     private String image;
     private String address;
     private String pass;
-
+    private String approved;
 
 }

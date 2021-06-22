@@ -2,15 +2,19 @@ package lk.easycar.service.impl;
 
 
 import lk.easycar.dto.UserDTO;
+import lk.easycar.dto.VehicleDTO;
 import lk.easycar.entity.User;
+import lk.easycar.entity.Vehicle;
 import lk.easycar.repo.UserRepo;
 import lk.easycar.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,4 +53,13 @@ public class UserServiceImpl implements UserService {
     public void updateUser(UserDTO dto) {
 
     }
+
+    @Override
+    public ArrayList<UserDTO> findPendingUsers(String approved) {
+        List<User> all = userRepo.findByApprovedEquals(approved);
+        return mapper.map(all, new TypeToken<ArrayList<UserDTO>>() {
+        }.getType());
+    }
 }
+
+

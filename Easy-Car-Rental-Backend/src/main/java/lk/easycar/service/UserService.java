@@ -12,5 +12,5 @@ public interface UserService {
     void deleteUser(String id);
     UserDTO searchUser(String id);
     void updateUser(UserDTO dto);
-
+    ArrayList<UserDTO> findPendingUsers(String approved);
 }

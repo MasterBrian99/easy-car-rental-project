@@ -1,15 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import Navbar from "../../containers/common/Navbar/Navbar";
-import { UserContext } from "../../context/UserContext";
+import Profile from "../../containers/common/Profile/Profile";
 
 const ProfilePage = () => {
-  // @ts-ignore
-  const [user] = useContext(UserContext);
-
   return (
     <div>
       <Navbar />
-      {console.log(user)}
+      <Profile />
       <div className="CircleContainerOne"></div>
       <div className="CircleContainerTwo"></div>
     </div>
