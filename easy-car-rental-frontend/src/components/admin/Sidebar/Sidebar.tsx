@@ -3,7 +3,7 @@ import { Box, Heading } from "@chakra-ui/layout";
 import { Link } from "react-router-dom";
 import { UnorderedList, ListItem } from "@chakra-ui/react";
 import { RiDashboardLine, RiUserVoiceLine } from "react-icons/ri";
-import { AiFillCar } from "react-icons/ai";
+import { AiFillCar,AiOutlineUserSwitch } from "react-icons/ai";
 
 class Sidebar extends Component {
   render() {
@@ -50,6 +50,11 @@ class Sidebar extends Component {
               <Link to="/admin/pending_users">
                 <ListItem padding="1rem 0">
                   <RiUserVoiceLine size="3rem" />
+                </ListItem>
+              </Link>
+                   <Link to="/admin/all_users">
+                <ListItem padding="1rem 0">
+                  <AiOutlineUserSwitch size="3rem" />
                 </ListItem>
               </Link>
             </UnorderedList>

@@ -44,6 +44,14 @@ public class UserController {
         return new ResponseEntity(new StandradResponse("201","done", userDTO),HttpStatus.CREATED);
     }
 
+        @PutMapping(path="/update",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+        public ResponseEntity updateCus(@RequestBody UserDTO  userDTO){
+            userService.addUser(userDTO);
+            return new ResponseEntity(new StandradResponse("201","done", userDTO),HttpStatus.CREATED);
+        }
+
+
+
     @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity searchCustomer(@PathVariable String id) {
         UserDTO userDTO = userService.searchUser(id);

@@ -16,9 +16,10 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   Portal,
+  Image
 } from "@chakra-ui/react";
 import axios from "axios";
-
+import Img  from '../../../assets/images/Nic.jpg';
 interface Prop {
   username: string;
   fullName: string;
@@ -42,8 +43,8 @@ const AdminPendingUsers = () => {
 
   async function updateUsers(el: Prop) {
     axios({
-      method: "POST",
-      url: "http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/customer",
+      method: "PUT",
+      url: "http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/customer/update",
       data: {
         username: el.username,
         fullName: el.fullName,
@@ -105,11 +106,15 @@ const AdminPendingUsers = () => {
           <Tbody>
             {/* @ts-ignore */}
             {pendingUsers.map((el, i) => (
-              <Tr key={i}>
+              <Tr key={i} >
                 <Td>{el.username}</Td>
                 <Td>{el.fullName}</Td>
-                <Td>{el.address}</Td>
-                <Td>{el.image}</Td>
+                  <Td>{el.address}</Td>
+                <Td><Box>
+  <Image   boxSize="100px"
+    objectFit="cover" src={Img} alt="Segun Adebayo" />
+    {/* el.image  */}
+</Box></Td>
                 <Td>
                   <Popover>
                     <PopoverTrigger>

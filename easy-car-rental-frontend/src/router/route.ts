@@ -7,6 +7,7 @@ import ProfilePage from "../screens/common/ProfilePage";
 import AdminDashboardPage from "../screens/admin/AdminDashboardPage";
 import AdminDashboardVehiclePage from "../screens/admin/AdminDashboardVehiclePage";
 import PendingUsersPage from "../screens/admin/PendingUsersPage";
+import AllUsersPage from "../screens/admin/AllUsersPage";
 
 export const appRoutes = [
   {
@@ -68,6 +69,13 @@ export const protectedRoutes = [
     id: 3,
     component: PendingUsersPage, //AdminDashboardVehiclePage
     path: "/admin/pending_users",
+    exact: true,
+    permission: "admin",
+  },
+    {
+    id: 4,
+    component: AllUsersPage, //AdminDashboardVehiclePage
+    path: "/admin/all_users",
     exact: true,
     permission: "admin",
   },

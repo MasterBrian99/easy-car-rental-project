@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import {
   Box,
   Container,
@@ -19,7 +19,15 @@ import {
   validatePassword,
 } from "./validate";
 import axios from "axios";
+import { UserContext } from "../../../context/UserContext";
+
+
 const Register = () => {
+
+
+  // @ts-ignore 
+  const [user, setUser] = useContext(UserContext);
+
   const [mainImage, setMainImage] = useState(null);
 
   function getImage(e: any) {
@@ -35,8 +43,10 @@ const Register = () => {
         data: data,
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(res);
+      console.log(res.data.data);
+          setUser(res.data.data);
     } catch (error) {
+      // @ts-ignore 
       console.error(error.response.data);
     }
   }
@@ -86,7 +96,7 @@ const Register = () => {
             initialValues={{
               username: "",
               fullName: "",
-              role: "",
+              role: "user",
               image: "",
               address: "",
               pass: "",
