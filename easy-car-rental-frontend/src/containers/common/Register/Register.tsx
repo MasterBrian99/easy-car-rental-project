@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Container,
@@ -19,44 +19,40 @@ import {
   validatePassword,
 } from "./validate";
 import axios from "axios";
-
 const Register = () => {
-  // username: "",
-  //             fullName: "",
-  //             role: "",
-  //             image: "",
-  //             address: "",
-  //             password: "",
+  const [mainImage, setMainImage] = useState(null);
 
-  // @ts-ignore
-  // const rebuildData = (data) => {
-  //   let formData = new FormData();
-  //   formData.append("username", data.username);
-  //   formData.append("fullName", data.fullName);
-  //   formData.append("role", data.role);
-  //   formData.append("image", data.image);
-  //   formData.append("address", data.address);
-  //   formData.append("password", data.password);
-  //   var object = {};
-  //   // @ts-ignore
-  //   formData.forEach((value, key) => (object[key] = value));
-  //   var json = JSON.stringify(object);
-  //   console.log("====================================");
-  //   console.log(json);
-  //   console.log("====================================");
-  //   return json;
-  // };
-
-  // const   handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (!e.target.files) {
-  //     return;
-  //   }
-  //   let file = e.target.files[0];
-  //   this.setState({ file: file });
-
+  function getImage(e: any) {
+    // @ts-ignore
+    console.log(e.target.files[0]);
+    setMainImage(e.target.files[0]);
+  }
+  async function sendData(data: any) {
+    try {
+      const res = await axios({
+        method: "POST",
+        url: "http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/customer",
+        data: data,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      console.log(res);
+    } catch (error) {
+      console.error(error.response.data);
+    }
+  }
+  // function rebuildData(values: any) {
   //   let data = new FormData();
-  //   data.append('file', file);
+  //   data.append("username", values.username);
+  //   data.append("fullName", values.fullName);
+  //   data.append("role", values.role);
+  //   // @ts-ignore
+  //   data.append("image", mainImage, mainImage.name);
+  //   data.append("address", values.address);
+  //   data.append("pass", values.pass);
+  //   data.append("approved", values.approved);
+  //   console.log(data);
 
+  //   return data;
   // }
   return (
     <Box className={`mainBackgrounds`} pt={"40"}>
@@ -94,34 +90,25 @@ const Register = () => {
               image: "",
               address: "",
               pass: "",
-              approved:"pending" 
+              approved: "pending",
             }}
             onSubmit={(values, actions) => {
               setTimeout(() => {
-                // const data = rebuildData(values);
-                axios({
-                  method: "POST",
-                  url: "http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/customer",
-                  data: {
-                    username: values.username,
-                    fullName: values.fullName,
-                    role: values.role,
-                    image: values.image,
-                    address: values.address,
-                    pass: values.pass,
-                    approved:values.approved
-                  },
-
-                  headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Content-Type": "application/json",
-                  },
-                }).then(function (response) {
-                  if (response.status === 201) {
-                  }
-                  console.log(response.status);
-                });
-
+                let data = new FormData();
+                data.append("username", values.username);
+                data.append("fullName", values.fullName);
+                data.append("role", values.role);
+                // @ts-ignore
+                data.append("image", mainImage, mainImage.name);
+                data.append("address", values.address);
+                data.append("pass", values.pass);
+                data.append("approved", values.approved);
+                console.log(data);
+                // @ts-ignore
+                for (var value of data.values()) {
+                  console.log(value);
+                }
+                sendData(data);
                 actions.setSubmitting(false);
               }, 1000);
             }}
@@ -161,26 +148,19 @@ const Register = () => {
                     </FormControl>
                   )}
                 </Field>
-                <Field name="image" validate={validateImage}>
+                <Field name="image">
                   {/* @ts-ignore */}
                   {({ field, form }) => (
-                    <FormControl
-                      isInvalid={form.errors.image && form.touched.image}
-                    >
+                    <FormControl>
                       <FormLabel htmlFor="image">Nic Image</FormLabel>
                       <Input
-                        {...field}
                         id="image"
                         placeholder="Full Name"
                         width="30rem"
                         type="file"
-                        // onChange={(event) => {
-                        //   props.setFieldValue(
-                        //     "image",
-                        //     // @ts-ignore
-                        //     event.currentTarget.files[0]
-                        //   );
-                        // }}
+                        onChange={(event) => {
+                          getImage(event);
+                        }}
                       />
                       <FormErrorMessage>{form.errors.image}</FormErrorMessage>
                     </FormControl>
