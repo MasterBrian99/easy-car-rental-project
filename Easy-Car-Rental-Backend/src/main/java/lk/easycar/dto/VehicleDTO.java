@@ -28,3 +28,4 @@ public class VehicleDTO {
     int current_KM;
     String available;
 }
+

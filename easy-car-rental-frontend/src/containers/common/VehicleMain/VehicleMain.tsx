@@ -1,10 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Container, Stack, Image, Text, Button } from "@chakra-ui/react";
 import { IoIosCompass } from "react-icons/io";
 import styles from "./style.module.scss";
-const VehicleMain = () => {
+import { VehicleProp } from '../../../interface/interface';
+import axios from "axios";
+import OrderForm from "../OrderForm/OrderForm";
+
+interface Prop {
+  registration_number: string
+}
+const VehicleMain = ({ registration_number }: Prop) => {
+
+  const [showOrderForm, setShowOrderForm] = useState(false);
+  const [vehicle, setVehicle] = useState<VehicleProp>();
+
+  const [currentImage, setCurrentImage] = useState(vehicle?.image_front_view || "http://127.0.0.1:8081/pexels-photo-158971.jpeg");
+
+  async function getData() {
+    const res = await axios.get(`http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/vehicle/${registration_number}`);
+    console.log(res);
+    setVehicle(res.data.data);
+  }
+
+  function setImageURL(value: string) {
+    if (value === undefined) {
+      value = "pexels-photo-158971.jpeg"
+    }
+    // @ts-ignore  
+    let res = value.split("C:\\Users\\brian\\Desktop\\work\\easy-car-rental-private-limited\\Easy-Car-Rental-Backend\\target\\Easy-Car-Rental-Backend-1.0.000\\uploads/").pop().trim();
+    return 'http://127.0.0.1:8081/' + res;
+
+  }
+  useEffect(() => {
+    // setVehicle_id(registration_number)
+    getData();
+    window.scrollTo(0, 0)
+    return () => {
+
+    }
+  }, [])
+
+
   return (
+
     <Box className={`mainBackgrounds`} pt={"40"}>
+      {console.log(vehicle)}
       <Container
         maxW="container.xl"
         height="100%"
@@ -17,10 +57,13 @@ const VehicleMain = () => {
         <Box height="100%" p={5}>
           <Image
             objectFit="cover"
-            src="https://www.extremetech.com/wp-content/uploads/2019/12/SONATA-hero-option1-764A5360-edit.jpg"
-            alt="Segun Adebayo"
+            // @ts-ignore 
+            src={currentImage}
+            alt="Car"
+            width="28rem"
           />
         </Box>
+        {console.log(currentImage)}
         <Stack
           direction="row"
           mt={6}
@@ -33,8 +76,44 @@ const VehicleMain = () => {
             padding={1}
             boxSize="100px"
             objectFit="cover"
-            src="https://i.pinimg.com/originals/14/95/49/1495491430618c8f74f7e0892c2c454e.jpg"
+            src={setImageURL(vehicle?.image_front_view)}
             alt="Segun Adebayo"
+            onClick={() => {
+              setCurrentImage(setImageURL(vehicle?.image_front_view))
+            }}
+          />
+          <Image
+            className={styles.imageCard}
+            padding={1}
+            boxSize="100px"
+            objectFit="cover"
+            src={setImageURL(vehicle?.image_back_view)}
+            alt="Segun Adebayo"
+            onClick={() => {
+              setCurrentImage(setImageURL(vehicle?.image_back_view))
+            }}
+          />
+          <Image
+            className={styles.imageCard}
+            padding={1}
+            boxSize="100px"
+            objectFit="cover"
+            src={setImageURL(vehicle?.image_interior_view)}
+            alt="Segun Adebayo"
+            onClick={() => {
+              setCurrentImage(setImageURL(vehicle?.image_interior_view))
+            }}
+          />
+          <Image
+            className={styles.imageCard}
+            padding={1}
+            boxSize="100px"
+            objectFit="cover"
+            src={setImageURL(vehicle?.image_side_view)}
+            alt="Segun Adebayo"
+            onClick={() => {
+              setCurrentImage(setImageURL(vehicle?.image_side_view))
+            }}
           />
         </Stack>
 
@@ -47,46 +126,49 @@ const VehicleMain = () => {
         >
           <Stack spacing={3} width="100%">
             <Text fontSize="2xl" fontWeight="600">
-              Toyota Hybrid
+              {vehicle?.brand} {"-"} {vehicle?.type}
             </Text>
             <Text fontSize="1xl" color="#DBDBE3">
-              ABC-2249
+              {vehicle?.registration_number}
             </Text>
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              Vehicle Color: Green
+              Vehicle Color: {vehicle?.color}
             </Text>
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              No Of Passengers : 4
+              No Of Passengers : {vehicle?.no_Of_Passengers}
             </Text>
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              Fuel Type : Deisel
+              Fuel Type : {vehicle?.fuel_Type}
             </Text>
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              Free Km for a Day : 22
+              Free Km for a Day : {vehicle?.free_Km_for_a_Day}
             </Text>
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              Free Km for a Month : 12
+              Free Km for a Month : {vehicle?.free_Km_for_a_month}
             </Text>
           </Stack>
           <Stack spacing={3} width="100%">
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              Transmission Type: Auto
+              Transmission Type: {vehicle?.transmission_type}
             </Text>
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              Daily Rate: 2400
+              Daily Rate: {vehicle?.daily_Rate}
             </Text>
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              Monthly Rate :3040
+              Monthly Rate : {vehicle?.monthly_Rate}
             </Text>
             <Text fontSize="1xl" color="#ffffff" fontWeight="700">
-              Prize Per Extra KM :220
+              Price Per Extra KM : {vehicle?.price_per_Extra_KM}
             </Text>
           </Stack>
         </Box>
-        <Button colorScheme="blue" leftIcon={<IoIosCompass />}>
-          Order
-        </Button>
+
+        <Box mb={"5"}>
+
+          <OrderForm />
+        </Box>
       </Container>
+
     </Box>
   );
 };

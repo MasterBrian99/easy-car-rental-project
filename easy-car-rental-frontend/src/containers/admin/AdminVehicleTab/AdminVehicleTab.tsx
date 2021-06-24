@@ -4,6 +4,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import AddVehicles from "./components/AddVehicles";
 import ViewVehicle from "./components/ViewVehicle";
 import SearchVehicle from "./components/SearchVehicle";
+import AddVehicles2 from "./components/AddVehicle/AddVehicles2";
 
 const AdminVehicleTab = () => {
   return (
@@ -36,7 +37,8 @@ const AdminVehicleTab = () => {
 
         <TabPanels>
           <TabPanel>
-            <AddVehicles />
+           <AddVehicles2/>
+            {/* <AddVehicles /> */}
           </TabPanel>
           <TabPanel>
             <ViewVehicle />

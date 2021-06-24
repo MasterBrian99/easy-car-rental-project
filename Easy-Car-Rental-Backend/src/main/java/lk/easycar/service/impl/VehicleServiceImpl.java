@@ -1,5 +1,6 @@
 package lk.easycar.service.impl;
 
+import lk.easycar.dto.UserDTO;
 import lk.easycar.dto.VehicleDTO;
 import lk.easycar.entity.Vehicle;
 import lk.easycar.repo.VehicleRepo;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -43,7 +45,10 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public VehicleDTO searchVehicle(String id) {
-        return null;
+
+        Optional<Vehicle> vehicle=vehicleRepo.findById(id);
+        return vehicle.map(value -> mapper.map(value, VehicleDTO.class)).orElse(null);
+
     }
 
     @Override
