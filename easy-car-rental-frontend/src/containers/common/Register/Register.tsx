@@ -14,7 +14,6 @@ import { Form, Formik, Field } from "formik";
 import {
   validateUserName,
   validateFullName,
-  validateImage,
   validateAddress,
   validatePassword,
 } from "./validate";
@@ -50,20 +49,7 @@ const Register = () => {
       console.error(error.response.data);
     }
   }
-  // function rebuildData(values: any) {
-  //   let data = new FormData();
-  //   data.append("username", values.username);
-  //   data.append("fullName", values.fullName);
-  //   data.append("role", values.role);
-  //   // @ts-ignore
-  //   data.append("image", mainImage, mainImage.name);
-  //   data.append("address", values.address);
-  //   data.append("pass", values.pass);
-  //   data.append("approved", values.approved);
-  //   console.log(data);
-
-  //   return data;
-  // }
+ 
   return (
     <Box className={`mainBackgrounds`} pt={"40"}>
       <Container

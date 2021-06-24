@@ -60,7 +60,7 @@ export const protectedRoutes = [
   },
   {
     id: 3,
-    component: AdminDashboardPage, //AdminDashboardVehiclePage
+    component: AdminDashboardVehiclePage, //AdminDashboardVehiclePage
     path: "/admin/vehicle",
     exact: true,
     permission: "admin",
