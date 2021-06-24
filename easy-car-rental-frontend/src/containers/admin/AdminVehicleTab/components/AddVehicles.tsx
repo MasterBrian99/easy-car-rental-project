@@ -10,28 +10,14 @@ import axios from "axios";
 const onSubmit = (values: any, actions: any) => {
   axios({
     method: "POST",
-    url: "http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/vehicle",
+    url: "http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/vehicle/main",
     data: values,
   }).then(function (response) {
     if (response.status === 201) {
     }
     console.log(response.status);
   });
-  // console.lo g(values);
 };
-
-// async function sendData(url: string, value: VehicleProp) {
-//   const res = await fetch(url, {
-//     method: "POST",
-//     mode: "no-cors",
-//     referrerPolicy: "no-referrer",
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//     },
-//     body: JSON.stringify(value),
-//   });
-//   return res.json();
-// }
 
 const initialValues: VehicleProp = {
   registration_number: "",
@@ -75,13 +61,7 @@ const validationSchema = Yup.object({
 });
 
 const Form = () => {
-  // function handleSub(e: any) {
-  //   console.log("====================================");
-  //   console.log(e.target.files[0]);
-  //   console.log("====================================");
-  //   initialValues.image_interior_view = e.target.files[0];
-  // }
-
+ 
   return (
     <Formik
       initialValues={initialValues}
@@ -148,22 +128,3 @@ const Form = () => {
 
 export default Form;
 
-/*
-var fileObject = $("#file")[0].files[0];//access file object from input field
-var fileName = $("#file")[0].files[0].name; //get file name
-var data = new FormData(); //setup form data object to send file data
-data.append("file", fileObject, fileName); //append data
-$.ajax({
-    url: 'up',
-    method: 'post',
-    async: true,
-    processData: false, //stop processing data of request body
-    contentType: false, // stop setting content type by jQuery
-    data: data,
-    success: function () {
-        alert("File Uploaded");
-    }
-});
-
-
-*/

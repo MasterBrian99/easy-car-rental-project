@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import {
   Table,
   Thead,
@@ -9,7 +9,29 @@ import {
   Td,
   TableCaption,
 } from "@chakra-ui/react";
+import { VehicleProp } from "../../../../interface/interface";
+import axios from "axios";
+
 const ViewVehicle = () => {
+
+//  useState<Prop[]>([]!);
+
+const [vehicle, setVehicle] = useState<VehicleProp[]>([]!);
+  
+ async function getData() {
+    const res=await axios.get('http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/vehicle')
+      setVehicle(res.data.data);
+  }
+
+
+useEffect(() => {
+    getData();
+
+  return () => {
+
+  }
+}, [])
+
   return (
     <div>
       <Table variant="simple">
@@ -25,14 +47,18 @@ const ViewVehicle = () => {
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td>CD-0011</Td>
-            <Td>Toyota</Td>
-            <Td>Luxury</Td>
-            <Td>Green</Td>
-            <Td>2</Td>
-            <Td>Yes</Td>
+          {vehicle.map((el,i)=>
+               <Tr key={i}>
+            <Td>{el.registration_number}</Td>
+            <Td>{el.brand}</Td>
+            <Td>{el.type}</Td>
+            <Td>{el.color}</Td>
+            <Td>{el.no_Of_Passengers}</Td>
+            <Td>{el.available}</Td>
           </Tr>
+            
+          )}
+     
           <Tr>
             <Td>CD-0011</Td>
             <Td>Toyota</Td>
