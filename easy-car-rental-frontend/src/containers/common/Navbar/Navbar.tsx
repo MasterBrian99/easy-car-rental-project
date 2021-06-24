@@ -8,9 +8,11 @@ import { BiLogIn } from "react-icons/bi";
 import { UserContext } from "../../../context/UserContext";
 
 const Navbar = () => {
-  // @ts-ignore
 
+  // @ts-ignore
   const [user, setUser] = useContext(UserContext);
+  console.log(user);
+  
   const history = useHistory();
   return (
     <div className={styles.main}>
@@ -42,7 +44,7 @@ const Navbar = () => {
           </Box>
           <Spacer />
           <Box>
-            {user.role !== "user" ? (
+            {user.role === "guest" ? (
               <>
                 <Button
                   colorScheme="blue"
@@ -64,7 +66,7 @@ const Navbar = () => {
                   Register
                 </Button>
               </>
-            ) : (
+            ) : user.role ==="user" ?  (
               <Button
                 colorScheme="blue"
                 leftIcon={<ImUserPlus />}
@@ -74,7 +76,19 @@ const Navbar = () => {
               >
                 Profile
               </Button>
-            )}
+            ) :  user.role ==="driver" ?(
+                  <Button
+                colorScheme="blue"
+                leftIcon={<ImUserPlus />}
+                onClick={() => {
+                  history.push("/driver_profile");
+                }}
+              >
+                Profile
+              </Button>
+            ) :<>
+            
+            </>}
 
             {/* <SignInForm /> */}
           </Box>

@@ -1,32 +1,17 @@
-import React, { useState, useContext } from "react";
+import { Alert, AlertIcon, AlertTitle, Box, Button, CloseButton, Container,FormControl,FormErrorMessage,FormLabel,Input,Text } from '@chakra-ui/react';
+import axios from 'axios';
+import { Field, Form, Formik } from 'formik';
+import React,{useContext,useState} from 'react'
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../../context/UserContext';
 
-import {
-  Box,
-  Container,
-  Text,
-  Input,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  Button,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  CloseButton,
-} from "@chakra-ui/react";
-import { Link } from "react-router-dom";
-import { Formik, Form, Field } from "formik";
-import axios from "axios";
-import { UserContext } from "../../../context/UserContext";
+const DriverLogin = () => {
 
-const Login = () => {
+    // @ts-ignore 
+  const [user, setUser] = useContext(UserContext);
   const [showUserNameAlert, setShowUserNameAlert] = useState(false);
   const [showPasswordAlert, setShowPasswordAlert] = useState(false);
   const [showProfileAlert, setShowProfileAlert] = useState(false);
-
-  // @ts-ignore 
-  const [user, setUser] = useContext(UserContext);
-
   //   const [password, setPassword] = useState("");
   function validateName(value: string) {
     let error;
@@ -44,8 +29,9 @@ const Login = () => {
     return error;
   }
 
-  return (
-    <Box className={`mainBackgrounds`} pt={"40"}>
+
+    return (
+       <Box className={`mainBackgrounds`} pt={"40"}>
       <Container
         maxW="container.xl"
         height="100%"
@@ -72,12 +58,7 @@ const Login = () => {
               Register
             </Link>
           </Text>
-              <Text fontSize="1xl" fontWeight="bold">
-            Login as a Driver{" "}
-            <Link to="/driver_login" style={{ color: "blue" }}>
-              Login
-            </Link>
-          </Text>
+
           {/*  */}
           <Box mt="3rem">
             <Formik
@@ -86,7 +67,7 @@ const Login = () => {
                 setTimeout(async () => {
                   // alert(JSON.stringify(values, null, 2));
                   const res = await axios.get(
-                    `http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/customer/${values.name}`
+                    `http://localhost:8080/Easy_Car_Rental_Backend_war_exploded/api/v1/driver/${values.name}`
                   );
                   // console.log(res);
                   if (res.data.data == null) {
@@ -94,7 +75,7 @@ const Login = () => {
 
                     setShowUserNameAlert(true);
                   } else {
-                    if (res.data.data.pass === values.pass) {
+                    if (res.data.data.password === values.pass) {
                       // console.log(user);
                       setUser(res.data.data);
                       // console.log("gg");
@@ -115,11 +96,11 @@ const Login = () => {
                       <FormControl
                         isInvalid={form.errors.name && form.touched.name}
                       >
-                        <FormLabel htmlFor="name">First name</FormLabel>
+                        <FormLabel htmlFor="name">User name</FormLabel>
                         <Input
                           {...field}
                           id="name"
-                          placeholder="name"
+                          placeholder="User Name"
                           width="30rem"
                         />
                         <FormErrorMessage>{form.errors.name}</FormErrorMessage>
@@ -192,7 +173,7 @@ const Login = () => {
               <></>
             )}
             {showProfileAlert ? (
-              <Link to="/profile">
+              <Link to="/driver_profile">
                 <Alert status="success" mt={2} backgroundColor="green">
                   <AlertIcon color="white" />
                   <AlertTitle>login successful</AlertTitle>
@@ -215,7 +196,7 @@ const Login = () => {
         </Box>
       </Container>
     </Box>
-  );
-};
+    )
+}
 
-export default Login;
+export default DriverLogin

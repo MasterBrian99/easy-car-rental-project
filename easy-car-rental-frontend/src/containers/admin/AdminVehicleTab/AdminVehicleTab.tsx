@@ -37,8 +37,8 @@ const AdminVehicleTab = () => {
 
         <TabPanels>
           <TabPanel>
-           {/* <AddVehicles2/> */}
-            <AddVehicles />
+           <AddVehicles2/>
+            {/* <AddVehicles /> */}
           </TabPanel>
           <TabPanel>
             <ViewVehicle />

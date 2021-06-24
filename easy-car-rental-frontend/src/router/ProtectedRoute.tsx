@@ -1,15 +1,22 @@
-import React from "react";
+import React,{useState,useContext} from "react";
 
 import { Route, Redirect } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+
+
 
 // @ts-ignore
 const ProtectedRoute = ({ isAuth, component: Component, ...rest }) => {
+
+// @ts-ignore
+  const [user,setUser]=useContext(UserContext)
+
   console.log(isAuth);
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (isAuth === "user") {
+        if (isAuth=='admin') {  //isAuth.indexOf(user.role) !== -1
           //user.role
           return <Component />;
         } else {

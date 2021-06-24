@@ -8,6 +8,8 @@ import AdminDashboardPage from "../screens/admin/AdminDashboardPage";
 import AdminDashboardVehiclePage from "../screens/admin/AdminDashboardVehiclePage";
 import PendingUsersPage from "../screens/admin/PendingUsersPage";
 import AllUsersPage from "../screens/admin/AllUsersPage";
+import DriverLoginPage from "../screens/common/DriverLoginPage";
+import AdminDriverPage from "../screens/admin/AdminDriverPage";
 
 export const appRoutes = [
   {
@@ -41,6 +43,12 @@ export const appRoutes = [
     path: "/register",
     exact: true,
   },
+    {
+    id: 7,
+    component: DriverLoginPage,
+    path: "/driver_login",
+    exact: true,
+  },
 ];
 
 export const protectedRoutes = [
@@ -49,34 +57,45 @@ export const protectedRoutes = [
     component: ProfilePage,
     path: "/profile",
     exact: true,
-    permission: "user",
+    permission:[ "user"],
   },
   {
     id: 2,
     component: AdminDashboardPage,
     path: "/admin/dashboard",
     exact: true,
-    permission: "admin",
+    permission:[ "admin"],
   },
   {
     id: 3,
-    component: AdminDashboardVehiclePage, //AdminDashboardVehiclePage
+    component: AdminDashboardVehiclePage,
     path: "/admin/vehicle",
     exact: true,
-    permission: "admin",
+    permission:[ "admin"],
   },
   {
     id: 3,
-    component: PendingUsersPage, //AdminDashboardVehiclePage
+    component: PendingUsersPage,
     path: "/admin/pending_users",
     exact: true,
-    permission: "admin",
+    permission:[ "admin"],
   },
     {
     id: 4,
-    component: AllUsersPage, //AdminDashboardVehiclePage
+    component: AllUsersPage, 
     path: "/admin/all_users",
     exact: true,
-    permission: "admin",
+    permission: ["admin"],
+  },
+     {
+    id: 5,
+    component: AdminDriverPage,
+    path: "/admin/driver",
+    exact: true,
+    permission:["admin"],
   },
 ];
+// DriverLoginPage
+
+
+

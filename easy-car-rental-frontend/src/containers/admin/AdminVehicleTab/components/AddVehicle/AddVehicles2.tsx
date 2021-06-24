@@ -50,6 +50,10 @@ const AddVehicles2 = () => {
   }
 
   async function sendData(data: any) {
+
+      for (var value of data.values()) {
+           console.log(value); 
+            }
     try {
       const res = await axios({
         method: "POST",
@@ -87,6 +91,7 @@ const AddVehicles2 = () => {
             available:'',
         }}  
       onSubmit={(values, actions) => {
+        console.log(values)
         setTimeout(() => {
 
             let data = new FormData();
@@ -120,6 +125,8 @@ const AddVehicles2 = () => {
             data.append('current_KM',values.current_KM);
             data.append('available',values.available);
             sendData(data);
+
+          
 
           actions.setSubmitting(false)
         }, 1000)

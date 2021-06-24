@@ -6,7 +6,7 @@ function App() {
   const [user, setUser] = useState({
     username: "",
     fullName: "",
-    role: "",
+    role: "guest",
     image: "",
     address: "",
     pass: "",

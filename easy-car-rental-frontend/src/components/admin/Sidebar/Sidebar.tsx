@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { UnorderedList, ListItem } from "@chakra-ui/react";
 import { RiDashboardLine, RiUserVoiceLine } from "react-icons/ri";
 import { AiFillCar,AiOutlineUserSwitch } from "react-icons/ai";
-
+import {RiUserSettingsFill} from 'react-icons/ri'
 class Sidebar extends Component {
   render() {
     return (
@@ -55,6 +55,11 @@ class Sidebar extends Component {
                    <Link to="/admin/all_users">
                 <ListItem padding="1rem 0">
                   <AiOutlineUserSwitch size="3rem" />
+                </ListItem>
+              </Link>
+            <Link to="/admin/driver">
+                <ListItem padding="1rem 0">
+                  <RiUserSettingsFill size="3rem" />
                 </ListItem>
               </Link>
             </UnorderedList>
