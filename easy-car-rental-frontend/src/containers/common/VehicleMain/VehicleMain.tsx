@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Box, Container, Stack, Image, Text, Button } from "@chakra-ui/react";
-import { IoIosCompass } from "react-icons/io";
 import styles from "./style.module.scss";
 import { VehicleProp } from '../../../interface/interface';
 import axios from "axios";
 import OrderForm from "../OrderForm/OrderForm";
+import { UserContext } from "../../../context/UserContext";
 
 interface Prop {
   registration_number: string
@@ -13,6 +13,9 @@ const VehicleMain = ({ registration_number }: Prop) => {
 
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [vehicle, setVehicle] = useState<VehicleProp>();
+
+  // @ts-ignore
+  const [user, setUser] = useContext(UserContext);
 
   const [currentImage, setCurrentImage] = useState(vehicle?.image_front_view || "http://127.0.0.1:8081/pexels-photo-158971.jpeg");
 
@@ -34,7 +37,7 @@ const VehicleMain = ({ registration_number }: Prop) => {
   useEffect(() => {
     // setVehicle_id(registration_number)
     getData();
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     return () => {
 
     }
@@ -60,7 +63,7 @@ const VehicleMain = ({ registration_number }: Prop) => {
             // @ts-ignore 
             src={currentImage}
             alt="Car"
-            width="28rem"
+            height="24rem"
           />
         </Box>
         {console.log(currentImage)}
@@ -165,7 +168,8 @@ const VehicleMain = ({ registration_number }: Prop) => {
 
         <Box mb={"5"}>
 
-          <OrderForm />
+          {/* @ts-ignore  */}
+          <OrderForm carNumber={registration_number} userRegister={user.username} />
         </Box>
       </Container>
 
