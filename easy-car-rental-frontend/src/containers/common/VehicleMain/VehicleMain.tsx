@@ -169,7 +169,8 @@ const VehicleMain = ({ registration_number }: Prop) => {
         <Box mb={"5"}>
 
           {/* @ts-ignore  */}
-          <OrderForm carNumber={registration_number} userRegister={user.username} />
+          {user.role == "user" ? <OrderForm carNumber={registration_number} userRegister={user.username} /> : <></>}
+
         </Box>
       </Container>
 

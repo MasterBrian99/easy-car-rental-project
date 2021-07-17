@@ -37,13 +37,12 @@ const Profile = () => {
             alt="Profile"
           />
           <Text fontSize="lg" fontWeight="bold">
-            Username
+            {user.username}
           </Text>
           <Text fontSize="lg" color="aliceblue">
-            Full Name
+            {user.fullName}
           </Text>
           <Text fontSize="md" padding="0 1rem" textAlign="center">
-            Lorem ipsum dolor sit. Lorem ipsum dolor sit amet.
           </Text>
           <Box display="flex" mt={"1rem"}>
             <Button colorScheme="blue" size="sm" mr={"1"}>
@@ -53,9 +52,12 @@ const Profile = () => {
               Delete Account
             </Button>
           </Box>
-          <Badge colorScheme="red" mt={"5"}>
+          {user.approved == "pending" ? <Badge colorScheme="red" mt={"5"}>
             Account is not activated
-          </Badge>
+          </Badge> : <Badge colorScheme="cyan" mt={"5"}>
+            Account is activated
+          </Badge>}
+
         </Box>
         <Box
           className="componentBlurBackground"

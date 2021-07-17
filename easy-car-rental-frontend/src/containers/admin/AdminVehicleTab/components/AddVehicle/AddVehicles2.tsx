@@ -1,59 +1,65 @@
-import { Box,FormControl,FormLabel,Input ,FormErrorMessage,Button,Grid} from '@chakra-ui/react'
-import React,{useState} from 'react'
-import { Formik,Field,Form } from "formik";
-import {VehicleProp} from '../../../../../interface/interface';
+import {
+  Box, FormControl, FormLabel, Input, FormErrorMessage, Button, Grid, Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  CloseButton
+} from '@chakra-ui/react'
+import React, { useState } from 'react'
+import { Formik, Field, Form } from "formik";
+import { VehicleProp } from '../../../../../interface/interface';
 
 import {
-    registration_number_Validate,
-    brand_Validate,type_Validate,
-    color_Validate,
-    no_Of_Passengers_Validate,
-    transmission_type_Validate,
-    fuel_Type_Validate,
-    daily_Rate_Validate,
-    monthly_Rate_Validate,
-    free_Km_for_a_Day_Validate,
-    free_Km_for_a_month_Validate,
-    price_per_Extra_KM_Validate,
-    current_KM_Validate,
-    available_Validate
+  registration_number_Validate,
+  brand_Validate, type_Validate,
+  color_Validate,
+  no_Of_Passengers_Validate,
+  transmission_type_Validate,
+  fuel_Type_Validate,
+  daily_Rate_Validate,
+  monthly_Rate_Validate,
+  free_Km_for_a_Day_Validate,
+  free_Km_for_a_month_Validate,
+  price_per_Extra_KM_Validate,
+  current_KM_Validate,
+  available_Validate
 
 } from './validate';
 import axios from 'axios';
 const AddVehicles2 = () => {
 
-    const [image_front_view, setImage_front_view] = useState();
-    const [image_back_view, setImage_back_view] = useState();
-    const [image_side_view, setImage_side_view] = useState();
-    const [image_interior_view, setImage_interior_view] = useState();
- 
-    function getImage_front_view(e: any) {
+  const [image_front_view, setImage_front_view] = useState();
+  const [image_back_view, setImage_back_view] = useState();
+  const [image_side_view, setImage_side_view] = useState();
+  const [image_interior_view, setImage_interior_view] = useState();
+  const [showAlert, setShowAlert] = useState(false);
+  function getImage_front_view(e: any) {
     // @ts-ignore
     setImage_front_view(e.target.files[0]);
   }
-  
-    function getImage_back_view(e: any) {
+
+  function getImage_back_view(e: any) {
     // @ts-ignore
     setImage_back_view(e.target.files[0]);
   }
 
-  
-    function getImage_side_view(e: any) {
+
+  function getImage_side_view(e: any) {
     // @ts-ignore
     setImage_side_view(e.target.files[0]);
   }
 
-  
-    function getImage_interior_view(e: any) {
+
+  function getImage_interior_view(e: any) {
     // @ts-ignore
     setImage_interior_view(e.target.files[0]);
   }
 
   async function sendData(data: any) {
 
-      for (var value of data.values()) {
-           console.log(value); 
-            }
+    for (var value of data.values()) {
+      console.log(value);
+    }
     try {
       const res = await axios({
         method: "POST",
@@ -61,88 +67,91 @@ const AddVehicles2 = () => {
         data: data,
         headers: { "Content-Type": "multipart/form-data" },
       });
-      console.log(res.data.data);
+      if (res.data.code == 201) {
+        setShowAlert(true);
+      }
+      console.log(res.data);
     } catch (error) {
       // @ts-ignore 
       console.error(error.response.data);
     }
   }
-    return (
-        <Box>
-          <Formik
-      initialValues={{
-           registration_number:'',
-            brand:'',
-            type:'',
-            image_front_view:'',
-            image_back_view:'',
-            image_side_view:'',
-            image_interior_view:'',
-            color:'',
-            no_Of_Passengers:0,
-            transmission_type:'',
-            fuel_Type:'',
-            daily_Rate:0,
-            monthly_Rate:0,
-            free_Km_for_a_Day:0,
-            free_Km_for_a_month:0,
-            price_per_Extra_KM:0,
-            current_KM:0,
-            available:'',
-        }}  
-      onSubmit={(values, actions) => {
-        console.log(values)
-        setTimeout(() => {
+  return (
+    <Box>
+      <Formik
+        initialValues={{
+          registration_number: '',
+          brand: '',
+          type: '',
+          image_front_view: '',
+          image_back_view: '',
+          image_side_view: '',
+          image_interior_view: '',
+          color: '',
+          no_Of_Passengers: 0,
+          transmission_type: '',
+          fuel_Type: '',
+          daily_Rate: 0,
+          monthly_Rate: 0,
+          free_Km_for_a_Day: 0,
+          free_Km_for_a_month: 0,
+          price_per_Extra_KM: 0,
+          current_KM: 0,
+          available: '',
+        }}
+        onSubmit={(values, actions) => {
+          console.log(values)
+          setTimeout(() => {
 
             let data = new FormData();
-            data.append('registration_number',values.registration_number);
-            data.append('brand',values.brand);
-            data.append('type',values.type);
-                // @ts-ignore
-            data.append('image_front_view',image_front_view,image_front_view.name);
-                // @ts-ignore
-            data.append('image_back_view',image_back_view,image_back_view.name);
-                // @ts-ignore
-            data.append('image_side_view',image_side_view,image_side_view.name);
-                // @ts-ignore
-            data.append('image_interior_view',image_interior_view,image_interior_view.name);
-            data.append('color',values.color);
+            data.append('registration_number', values.registration_number);
+            data.append('brand', values.brand);
+            data.append('type', values.type);
             // @ts-ignore
-            data.append('no_Of_Passengers',values.no_Of_Passengers);
-            data.append('transmission_type',values.transmission_type);
-            data.append('fuel_Type',values.fuel_Type);
-             // @ts-ignore
-            data.append('daily_Rate',values.daily_Rate);   
-             // @ts-ignore
-            data.append('monthly_Rate',values.monthly_Rate);   
-             // @ts-ignore
-            data.append('free_Km_for_a_Day',values.free_Km_for_a_Day);   
-             // @ts-ignore
-            data.append('free_Km_for_a_month',values.free_Km_for_a_month);   
-             // @ts-ignore
-            data.append('price_per_Extra_KM',values.price_per_Extra_KM); 
-             // @ts-ignore
-            data.append('current_KM',values.current_KM);
-            data.append('available',values.available);
+            data.append('image_front_view', image_front_view, image_front_view.name);
+            // @ts-ignore
+            data.append('image_back_view', image_back_view, image_back_view.name);
+            // @ts-ignore
+            data.append('image_side_view', image_side_view, image_side_view.name);
+            // @ts-ignore
+            data.append('image_interior_view', image_interior_view, image_interior_view.name);
+            data.append('color', values.color);
+            // @ts-ignore
+            data.append('no_Of_Passengers', values.no_Of_Passengers);
+            data.append('transmission_type', values.transmission_type);
+            data.append('fuel_Type', values.fuel_Type);
+            // @ts-ignore
+            data.append('daily_Rate', values.daily_Rate);
+            // @ts-ignore
+            data.append('monthly_Rate', values.monthly_Rate);
+            // @ts-ignore
+            data.append('free_Km_for_a_Day', values.free_Km_for_a_Day);
+            // @ts-ignore
+            data.append('free_Km_for_a_month', values.free_Km_for_a_month);
+            // @ts-ignore
+            data.append('price_per_Extra_KM', values.price_per_Extra_KM);
+            // @ts-ignore
+            data.append('current_KM', values.current_KM);
+            data.append('available', values.available);
             sendData(data);
 
-          
 
-          actions.setSubmitting(false)
-        }, 1000)
-      }}
-    >
-      {(props) => (
-        <Form>
-         <Grid templateColumns="repeat(2, 1fr)" gap={4}>
-             <Box>
-               <Field name="registration_number" validate={registration_number_Validate}>
+
+            actions.setSubmitting(false)
+          }, 1000)
+        }}
+      >
+        {(props) => (
+          <Form>
+            <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+              <Box>
+                <Field name="registration_number" validate={registration_number_Validate}>
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
                       isInvalid={form.errors.registration_number && form.touched.registration_number}
                     >
-                      <FormLabel htmlFor="registration_number"  marginTop={'2'}>Registration Number</FormLabel>
+                      <FormLabel htmlFor="registration_number" marginTop={'2'}>Registration Number</FormLabel>
                       <Input
                         {...field}
                         id="registration_number"
@@ -155,7 +164,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                      <Field name="brand" validate={brand_Validate} >
+                <Field name="brand" validate={brand_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -174,7 +183,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                        <Field name="type" validate={type_Validate} >
+                <Field name="type" validate={type_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -193,7 +202,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                  <Field name="image_front_view">
+                <Field name="image_front_view">
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl>
@@ -211,7 +220,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                       <Field name="image_back_view">
+                <Field name="image_back_view">
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl>
@@ -229,7 +238,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                       <Field name="image_side_view">
+                <Field name="image_side_view">
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl>
@@ -247,7 +256,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                       <Field name="image_interior_view">
+                <Field name="image_interior_view">
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl>
@@ -265,7 +274,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                       <Field name="color" validate={color_Validate} >
+                <Field name="color" validate={color_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -284,7 +293,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-            <Field name="no_Of_Passengers" validate={no_Of_Passengers_Validate} >
+                <Field name="no_Of_Passengers" validate={no_Of_Passengers_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -303,9 +312,9 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-             </Box>
-             <Box>
-             <Field name="transmission_type" validate={transmission_type_Validate} >
+              </Box>
+              <Box>
+                <Field name="transmission_type" validate={transmission_type_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -324,7 +333,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-              <Field name="fuel_Type" validate={fuel_Type_Validate} >
+                <Field name="fuel_Type" validate={fuel_Type_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -343,7 +352,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                      <Field name="daily_Rate" validate={daily_Rate_Validate} >
+                <Field name="daily_Rate" validate={daily_Rate_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -381,7 +390,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                     <Field name="free_Km_for_a_Day" validate={free_Km_for_a_Day_Validate} >
+                <Field name="free_Km_for_a_Day" validate={free_Km_for_a_Day_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -400,7 +409,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-                    <Field name="free_Km_for_a_month" validate={free_Km_for_a_month_Validate} >
+                <Field name="free_Km_for_a_month" validate={free_Km_for_a_month_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -419,7 +428,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-             <Field name="price_per_Extra_KM" validate={price_per_Extra_KM_Validate} >
+                <Field name="price_per_Extra_KM" validate={price_per_Extra_KM_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -438,7 +447,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-              <Field name="current_KM" validate={current_KM_Validate} >
+                <Field name="current_KM" validate={current_KM_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -457,7 +466,7 @@ const AddVehicles2 = () => {
                     </FormControl>
                   )}
                 </Field>
-   <Field name="available" validate={available_Validate} >
+                <Field name="available" validate={available_Validate} >
                   {/* @ts-ignore */}
                   {({ field, form }) => (
                     <FormControl
@@ -477,22 +486,27 @@ const AddVehicles2 = () => {
                   )}
                 </Field>
 
-             </Box>
-         </Grid>
-       
-          <Button
-            mt={4}
-            colorScheme="teal"
-            isLoading={props.isSubmitting}
-            type="submit"
-          >
-            Submit
-          </Button>
-        </Form>
-      )}
-    </Formik>
-        </Box>
-    )
+              </Box>
+            </Grid>
+
+            <Button
+              mt={4}
+              colorScheme="teal"
+              isLoading={props.isSubmitting}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+        )}
+      </Formik>
+      {showAlert ? <Alert status="success" mt={"2rem"}>
+        <AlertIcon />
+        <AlertTitle mr={2} color="black">Vehicle Added</AlertTitle>
+        <CloseButton position="absolute" right="8px" top="8px" />
+      </Alert> : <></>}
+    </Box>
+  )
 }
 
 export default AddVehicles2

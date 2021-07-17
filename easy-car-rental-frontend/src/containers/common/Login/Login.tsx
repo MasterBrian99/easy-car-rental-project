@@ -72,7 +72,7 @@ const Login = () => {
               Register
             </Link>
           </Text>
-              <Text fontSize="1xl" fontWeight="bold">
+          <Text fontSize="1xl" fontWeight="bold">
             Login as a Driver{" "}
             <Link to="/driver_login" style={{ color: "blue" }}>
               Login

@@ -12,7 +12,7 @@ const Navbar = () => {
   // @ts-ignore
   const [user, setUser] = useContext(UserContext);
   console.log(user);
-  
+
   const history = useHistory();
   return (
     <div className={styles.main}>
@@ -35,10 +35,10 @@ const Navbar = () => {
                 <li>Browse</li>
               </Link>
               <Link to="/">
-                <li>Lamo</li>
+                <li>About US</li>
               </Link>
               <Link to="/">
-                <li>Lamo</li>
+                <li>Contact</li>
               </Link>
             </ul>
           </Box>
@@ -66,7 +66,7 @@ const Navbar = () => {
                   Register
                 </Button>
               </>
-            ) : user.role ==="user" ?  (
+            ) : user.role === "user" ? (
               <Button
                 colorScheme="blue"
                 leftIcon={<ImUserPlus />}
@@ -76,8 +76,8 @@ const Navbar = () => {
               >
                 Profile
               </Button>
-            ) :  user.role ==="driver" ?(
-                  <Button
+            ) : user.role === "driver" ? (
+              <Button
                 colorScheme="blue"
                 leftIcon={<ImUserPlus />}
                 onClick={() => {
@@ -86,9 +86,17 @@ const Navbar = () => {
               >
                 Profile
               </Button>
-            ) :<>
-            
-            </>}
+            ) : user.role === "admin" ? (
+              <Button
+                colorScheme="blue"
+                leftIcon={<ImUserPlus />}
+                onClick={() => {
+                  history.push("/admin/dashboard");
+                }}
+              >
+                Profile
+              </Button>
+            ) : <></>}
 
             {/* <SignInForm /> */}
           </Box>

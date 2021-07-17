@@ -43,7 +43,7 @@ const BrowseHome = () => {
           )}
         </Flex>
         <Container centerContent mt={8}>
-          <Button colorScheme="blue" leftIcon={<HiCursorClick />}>
+          <Button colorScheme="blue" leftIcon={<HiCursorClick />} >
             See More
           </Button>
         </Container>

@@ -1,4 +1,4 @@
-import React, { useState ,useContext} from "react";
+import React, { useState, useContext } from "react";
 import {
   Box,
   Container,
@@ -43,13 +43,13 @@ const Register = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(res.data.data);
-          setUser(res.data.data);
+      setUser(res.data.data);
     } catch (error) {
       // @ts-ignore 
       console.error(error.response.data);
     }
   }
- 
+
   return (
     <Box className={`mainBackgrounds`} pt={"40"}>
       <Container
